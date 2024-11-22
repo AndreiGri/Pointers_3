@@ -1,33 +1,33 @@
 ﻿#include <iostream>
 
-bool substr(const char* w, const char* occ)
+bool substr(const char* w, const char* occ)                          //Метод проверки вхождения субстроки в строку
 {
-    bool g;
-    int i = 0;
-    int j = 0;
-    while (*(occ + i) != '\0' && *(w + j + i) != '\0')
+    bool g;                                                          //Объявляем буленовскую переменную
+    int i = 0;                                                       //Счётчик i
+    int j = 0;                                                       //Счётчик j
+    while (*(occ + i) != '\0' && *(w + j + i) != '\0')               //Цикл длится до окончания субстроки или строки
     {
-        if (*(occ + i) == *(w + j + i))
+        if (*(occ + i) == *(w + j + i))                              //Если символ в субстроке совпадает с символом в строке
         {
-            i++;
-            g = true;
+            i++;                                                     //переходим к сверке следующих символов в субстроке и строке
+            g = true;                                                //и присваиваем переменной g значение true
         }
-        else
+        else                                                         //иначе
         {
-            i = 0;
-            j++;
-            g = false;
+            i = 0;                                                   //возвращаемся к сверке первого символа в субстроке 
+            j++;                                                     //со следующим символом в строке
+            g = false;                                               //и присваиваем переменной g значение false
         }
     }
-    return g;
+    return g;                                                        //Возвращаемое значение
 }
 
 int main()
 {
-    const char* a = "Hello world!";
-    const char* b = "wor";
-    const char* c = "banana";
+    const char* a = "Hello world!";                                  //Создание указателя на строку
+    const char* b = "wor";                                           //Создание указателя на первую субстроку
+    const char* c = "banana";                                        //Создание указателя на вторую субстроку
 
-    std::cout << ' ' << std::boolalpha << substr(a, b) << std::endl;
-    std::cout << ' ' << std::boolalpha << substr(a, c) << std::endl;
+    std::cout << ' ' << std::boolalpha << substr(a, b) << std::endl; //Вывод результата проверки первой субстроки
+    std::cout << ' ' << std::boolalpha << substr(a, c) << std::endl; //Вывод результата проверки второй субстроки
 }
